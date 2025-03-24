@@ -14,7 +14,7 @@ helpful_links = [
 st.title(":cup_with_straw: Customize Your Smoothie ! :cup_with_straw:")
 st.write("Choose the fruits you want in your custome smoothie!")
 
-cnx = sc.connection("snowflake")
+cnx = create_snowflake_connection()
 session = cnx.session()
 
 name_on_order = st.text_input("Name on Smoothie :")
