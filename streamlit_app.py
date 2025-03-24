@@ -14,8 +14,20 @@ helpful_links = [
 st.title(":cup_with_straw: Customize Your Smoothie ! :cup_with_straw:")
 st.write("Choose the fruits you want in your custome smoothie!")
 
-cnx = st.connection("snowflake")
-session = cnx.session()
+cnx = sc.connect(
+    user="rachanaa", 
+    password="Rachana@9834148854", 
+    account="PLLQPHG-WXB61444", 
+    warehouse="COMPUTE_WH", 
+    database="SMOOTHIES", 
+    schema="PUBLIC"
+)
+
+# Create a Snowflake session using the connection
+session = cnx.cursor()
+
+#cnx = sc.connection("snowflake")
+#session = cnx.session()
 
 name_on_order = st.text_input("Name on Smoothie :")
 st.write("The name on smoothie will be:", name_on_order)
