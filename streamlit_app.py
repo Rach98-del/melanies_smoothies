@@ -1,5 +1,6 @@
 # Import python packages
 import streamlit as st
+from snowflake.snowpark import Session
 from snowflake.snowpark.functions import col
 #import snowflake.connector as sc
 
@@ -14,10 +15,22 @@ helpful_links = [
 st.title(":cup_with_straw: Customize Your Smoothie ! :cup_with_straw:")
 st.write("Choose the fruits you want in your custome smoothie!")
 
+connection_parameters = {
+    "account": "PLLQPHG-WXB61444",
+    "user": "rachanaa",
+    "password": "Rachana@9834148854",
+    "role": "SYSADMIN",
+    "warehouse": "COMPUTE_WH",
+    "database": "SMOOTHIES",
+    "schema": "PUBLIC"
+}
+
+# Initialize Snowflake session
+session = Session.builder.configs(connection_parameters).create()
 
 
-cnx = st.connection("snowflake")
-session = cnx.session()
+#cnx = st.connection("snowflake")
+#session = cnx.session()
 
 name_on_order = st.text_input("Name on Smoothie :")
 st.write("The name on smoothie will be:", name_on_order)
